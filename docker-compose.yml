@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  opencode:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: opencode
+    stdin_open: true # Mantém o STDIN aberto (necessário para CLI interativa)
+    tty: true        # Aloca um TTY simulado (necessário para CLI interativa)
+    volumes:
+      - /_dev_:/workspace
+      - opencode_data:/root/.config/opencode
+    environment:
+      - TERM=xterm-256color
+
+volumes:
+  opencode_data:
