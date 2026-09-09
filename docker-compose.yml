@@ -7,7 +7,10 @@ services:
       dockerfile: Dockerfile
     container_name: opencode
     stdin_open: true # Mantém o STDIN aberto (necessário para CLI interativa)
-    tty: true        # Aloca um TTY simulado (necessário para CLI interativa)
+    tty: true # Aloca um TTY simulado (necessário para CLI interativa)
+    ports:
+      - "31369:31369"
+      - "4096:4096"
     volumes:
       - /_dev_:/workspace
       - opencode_data:/root/.config/opencode
